@@ -955,7 +955,7 @@ html, body {
   .nav-bar {
     max-width: 60%;
   }
-  /* MENU > LOGO */
+  /* HEADER > MENU > LOGO */
   .header-logo, .footer-logo {
     width: auto;
     height: 58px;
