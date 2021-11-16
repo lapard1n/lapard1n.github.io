@@ -387,7 +387,7 @@
 /* HEADER > SEARCH-FORM */
   .search-form {
     height: auto;
-    margin: 50px 0 75px 0;
+    margin: 50px 0 100px 0;
   }
   .search-form__btn {
     position: absolute;
@@ -431,6 +431,7 @@
 
 /* MAIN > PLACES > ITEM-CASE */
   .gallery {
+    overflow: hidden;
     position: relative;
     width: calc(100% + 50px);
     left: -25px;
@@ -579,27 +580,32 @@
 }
 
 /* WARNING!!! ЗОНА КОСТЫЛЕЙ!!! */
-@media (max-width: 425px) and (max-height: 599.98px) {
-/* HEADER */
-  .header {
-    height: 125vh;
-  }
-
+@media (max-height: 680px) {
 /* MAIN > PROPS */
   .props {
-  height: calc(0.4*100vh);
+    height: calc(0.4*100vh);
   }
-
 /* FOOTER */
   .footer {
-    height: calc(0.6*100vh);
+    height: auto;
+  }
+}
+
+@media (max-height: 599.98px) {
+/* HEADER */
+  .header {
+    height: auto;
+  }
+/* HEADER > MENU > NAV-BAR */
+  .nav-bar {
+    top: -100vh;
   }
 }
 
 @media (max-width: 300px) {
 /* MAIN > DETAILS */
   .details__about {
-    padding: 25px 5px;
+    padding: 25px 10px;
   }
 
 /* FOOTER */
