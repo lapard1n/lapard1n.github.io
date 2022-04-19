@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./libs/reset.min.css?_v=20220414225154">
-    <link rel="stylesheet" href="./css/style.min.css?_v=20220414225154">
+    <link rel="stylesheet" href="./libs/reset/reset.min.css?_v=20220419214222">
+    <link rel="stylesheet" href="./libs/nprogress/nprogress.min.css?_v=20220419214222">
+    <link rel="stylesheet" href="./css/style.min.css?_v=20220419214222">
     <link rel="shortcut icon" href="./img/news.png" type="image/x-icon">
     <title>Amazing news</title>
   </head>
@@ -67,8 +68,8 @@
             <div class="border-line"></div>
             <div class="border-line"></div>
           </div>
-          <button class="slider__control slider__control_prev"><img src="./img/chevron-left.svg" alt="left arrow"></button>
-          <button class="slider__control slider__control_next"><img src="./img/chevron-right.svg" alt="right arrow"></button>
+          <button class="slider__control slider__control_prev"></button>
+          <button class="slider__control slider__control_next"></button>
         </div>
       </div>
       <main class="main">
@@ -141,9 +142,54 @@
         </div><a class="main__link-up" href=""><span class="main__link-arrow"></span><span class="main__link-arrow"></span></a>
       </main>
       <footer class="footer">
-        <div class="footer__wrapper"><a class="footer__link" href="">about us...</a><a class="footer__link" href="">Stay with us!</a><a class="footer__link" href="">contacts...</a></div>
+        <div class="footer__wrapper">
+          <div class="footer__info">
+            <div class="footer__title">Contact info</div>
+            <div class="footer__text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas soluta molestias non dignissimos facere natus tempora id nihil libero omnis quisquam temporibus, quo, officia quia iusto consectetur fugit ducimus cum!</div>
+            <div class="footer__contacts">
+              <div class="footer__contact"><img src="./img/map-pin.svg" alt=""><span>Adress:</span> <a href="https://www.google.com/maps/place/Sarphatipark+106,+1073+EC+Amsterdam,+Netherlands/@52.3536736,4.8953845,17z/data=!3m1!4b1!4m13!1m7!3m6!1s0x47c6098dc93755f3:0xd1a9155e940cf8df!2sSarphatipark+106,+1073+EC+Amsterdam,+Netherlands!3b1!8m2!3d52.3536703!4d4.8975732!3m4!1s0x47c6098dc93755f3:0xd1a9155e940cf8df!8m2!3d52.3536703!4d4.8975732">Sarphatipark 106, 1073 EC Amsterdam, Netherlands</a></div>
+              <div class="footer__contact"><img src="./img/phone.svg" alt=""><span>Phone:</span> <a href="tel:+78005553535">+7 (800) 555-35-35</a></div>
+              <div class="footer__contact"><img src="./img/mail.svg" alt=""><span>Mail:</span> <a href="mailto:info@lapard1n.com">info@lapard1n.com</a></div>
+            </div>
+          </div>
+          <div class="footer__line"></div>
+          <form class="footer__input-case" action="" method="" name="client-request" enctype="text/plain" id="input-case">
+            <fieldset class="footer__container" name="client-request" form="input-case">
+              <div class="footer__case-info">
+                <div class="footer__user-info">
+                  <input class="footer__input" type="text" name="user-name" id="user-name" form="input-case" autocomplete="off" required>
+                  <label class="footer__label" for="user-name">Your Name</label>
+                </div><span>&</span>
+                <div class="footer__user-info">
+                  <input class="footer__input" type="email" name="user-mail" id="user-mail" form="input-case" autocomplete="off" required>
+                  <label class="footer__label" for="user-mail">Your Email</label>
+                </div>
+              </div>
+              <div class="footer__user-theme">
+                <input class="footer__input" type="text" name="user-theme" id="user-theme" form="input-case" autocomplete="off">
+                <label class="footer__label" for="user-theme">Your Title</label>
+              </div>
+              <div class="footer__user-message">
+                <textarea class="footer__input" name="user-message" id="user-message" form="input-case" rows="10" autocomplete="off"></textarea>
+                <label class="footer__label" for="user-message">Your Message</label>
+              </div>
+            </fieldset>
+            <div class="footer__buttons">
+              <input class="footer__submit" type="submit" name="send" value="Send" form="input-case">
+              <buttun class="footer__submit" type="reset" name="reset" form="input-case">Reset</buttun>
+            </div>
+          </form>
+        </div>
+        <div class="footer__copyright">
+          <div class="footer__copyright-wrapper">
+            <div class="footer__copyright-info">Copyright © 2022. All right a reserved.</div>
+            <div class="footer__copyright-info">Desygned by <a href="https://github.com/lapard1n">lapard1n</a></div>
+          </div>
+        </div>
       </footer>
     </div>
-    <script src="./js/app.js?_v=20220414225154"></script>
+    <script src="./libs/jquery/jquery.min.js?_v=20220419214222"></script>
+    <script src="./libs/nprogress/nprogress.min.js?_v=20220419214222"></script>
+    <script src="./js/app.js?_v=20220419214222"></script>
   </body>
 </html>

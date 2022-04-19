@@ -1,5 +1,14 @@
 "use strict"
 
+// TODO ПОДКЛЮЧАЮ БИБЛИОТЕКУ СО СТАТУС-БАРОМ ЗАГРУЗКИ
+$(document).ready(function () {
+  NProgress.start();
+});
+
+$(window).on('load', function () {
+  NProgress.done(true);
+});
+
 // TODO СКИДЫВАЮ КЛАСС ПРЕД-ЗАГРУЗКИ ДЛЯ СКИПА АНИМАЦИИ
 setTimeout(function () {
   document.querySelector('.preload').classList.remove('preload');
@@ -38,7 +47,7 @@ if (isMobile.any()) {
   document.body.classList.add('_touch');
 
   // ? ПОЛУЧАЕМ МАССИВ ОБЪЕКТОВ ДЛЯ МЕНЮ
-  let menuArrows = document.querySelectorAll('.menu__arrow');
+  const menuArrows = document.querySelectorAll('.menu__arrow');
   if (menuArrows.length > 0) {
     for (let index = 0; index < menuArrows.length; index++) {
 
@@ -98,21 +107,29 @@ for (let menuAnchor of menuAnchors) {
 // TODO КНОПКА ВОЗВРАЩЕНИЯ НАВЕРХ
 const goToTopBtn = document.querySelector('.main__link-up');
 const header = document.querySelector('.header');
-window.addEventListener('scroll', trackScroll, false);
+const options = { threshold: 1.0 }
 
-function trackScroll(e) {
-  e.preventDefault();
-  let scrolled = window.pageYOffset;
-  // ? ПОЛУЧАЮ ВЫСОТУ HEADER И ВЫЧИТАЮ 1 ДЛЯ ПОЯВЛЕНИЯ КНОПКИ ПРИ КЛИКЕ НА ANCHOR
-  let topIndent = 99;
+const observeCallback = function (entries, observer) {
+  entries.forEach((entry) => {
+    // ? СВОЙСТВА ОБЪЕКТА IntersectionObserver
+    const {
+      // ? ДОСТУП К ОТСЛЕЖИВАЕМОМУ ЭЛЕМЕНТУ
+      target,
+      // ? true ЕСЛИ ОТСЛЕЖИВАЕМЫЙ ЭЛЕМЕНТ ПЕРЕСЕКАЕТ viewport ХОТЯ БЫ НА 1 px
+      isIntersecting
+    } = entry;
 
-  if (scrolled > topIndent) {
-    goToTopBtn.classList.add('_show');
-  }
-  if (scrolled < topIndent) {
-    goToTopBtn.classList.remove('_show');
-  }
+    if (isIntersecting) {
+      goToTopBtn.classList.remove('_show');
+    } else {
+      goToTopBtn.classList.add('_show');
+    }
+
+  });
 }
+
+const observer = new IntersectionObserver(observeCallback, options);
+observer.observe(header);
 
 // TODO ПРОПИСВАЮ ПЛАВНУЮ ПРОКРУТКУ ВВЕРХ ПРИ НАЖАТИИ НА ПОЯВИВШУЮСЯ КНОПКУ
 goToTopBtn.addEventListener('click', backToTop, false);
@@ -129,13 +146,13 @@ function backToTop(e) {
 // TODO ДОБАВЛЯЮ HR ЭЛЕМЕНТ В НАЧАЛО СПИСКА SUB-LIST НА ЭКРАНАХ ДО 768
 if (document.documentElement.clientWidth < 768) {
 
-  let hrElement = document.querySelectorAll('.menu__sub-list');
+  const hrElement = document.querySelectorAll('.menu__sub-list');
   hrElement.forEach(i => {
-    let newUpHr = document.createElement('hr');
+    const newUpHr = document.createElement('hr');
     i.insertAdjacentElement('afterbegin', newUpHr);
   })
   hrElement.forEach(i => {
-    let newUpHr = document.createElement('hr');
+    const newUpHr = document.createElement('hr');
     i.insertAdjacentElement('beforeend', newUpHr);
   })
 }
@@ -148,6 +165,33 @@ burgerMenu.addEventListener('click', function (e) {
   burgerMenu.classList.toggle('_active');
   menuDropout.classList.toggle('_active');
 }, false);
+
+// ? УСТАНАВЛИВАЮ ВЫСОТУ ЭЛЕМЕНТЫ ПО ЕГО СОСЕД
+const footerLine = document.querySelector(".footer__line");
+const footerInfo = document.querySelector(".footer__info");
+const footerHeight = document.querySelector(".footer__input-case").offsetHeight;
+footerLine.style.height = (footerHeight - 70) + "px";
+footerInfo.style.height = footerHeight + "px";
+
+const footerInput = document.querySelectorAll(".footer__input");
+const footerLabel = document.querySelectorAll('.footer__label');
+const footerReset = document.querySelector('buttun.footer__submit');
+
+footerInput.forEach(input => {
+  input.addEventListener('input', function (e) {
+    input.nextSibling.nextSibling.classList.add("input-active");
+    if (input.value == '') {
+      input.nextSibling.nextSibling.classList.remove("input-active");
+    }
+  }, false);
+  footerReset.addEventListener('click', function (e) {
+    input.value = '';
+    input.nextSibling.nextSibling.classList.remove("input-active");
+  }, false);
+})
+
+
+
 
 // TODO СКРИПТ КОНВЕРТАЦИИ И СЖАТИЯ ИЗОБРАЖЕНИЙ
 function isWebp() {
@@ -168,66 +212,67 @@ function isWebp() {
 }
 isWebp();
 
-// TODO УКАЗАНИЕ СЛАЙДА ПО УМОЛЧАНИЮ
-// TODO КНОПКИ ПРОКРУТКИ
-// TODO ЗАЦИКЛЕННОСТЬ ПЕРЕХОДА
-// TODO АВТО-ПРОКРУТКА СЛАЙДЕРА
-// TODO ПРОКРУТКА СВАЙПОМ
-
 const wrapper = document.querySelector('.slider__wrapper');
-const container = document.querySelector('.slider__container');
 const track = document.querySelector('.slider__track');
 const items = document.querySelectorAll('.slider__item');
 const btnPrev = document.querySelector('.slider__control_prev');
 const btnNext = document.querySelector('.slider__control_next');
+const indicators = document.querySelector('.slider__indicators');
 
-function slide(mainWrapper, prev, next) {
+function slide() {
   let posX1 = 0;
   let posX2 = 0;
   let posInitial;
   let posFinal;
   let threshold = 100;
-  let slides = track.querySelectorAll('.slider__item');
-  let slidesLength = slides.length;
-  let slideSize = track.querySelectorAll('.slider__item')[0].offsetWidth;
-  let firstSlide = slides[0];
-  let lastSlide = slides[slidesLength - 1];
+  let slidesLength = items.length;
+  let slideSize = items[0].offsetWidth;
+  let firstSlide = items[0];
+  let lastSlide = items[slidesLength - 1];
   let cloneFirst = firstSlide.cloneNode(true);
   let cloneLast = lastSlide.cloneNode(true);
   let index = 0;
   let allowShift = true;
 
   // ? КЛОНИРУЮ ПЕРВЫЕ И ПОСЛЕДНИЕ СЛАЙДЫ В ОЧЕРЕДЬ
-  track.appendChild(cloneFirst);
-  track.insertBefore(cloneLast, firstSlide);
-  mainWrapper.classList.add('loaded');
+  track.insertBefore(cloneLast, firstSlide); // ДО
+  track.appendChild(cloneFirst); //  ПОСЛЕ
 
-  // ? СОБЫТИЕ МЫШЬЮ
+  // ? КОГДА СЛАЙДЫ КЛАНИРОВАНЫ ПРИМЕНЯЕМ СТИЛИ
+  wrapper.classList.add('loaded');
+
+  // ? СОБЫТИЕ ДЛЯ МЫШИ
   track.onmousedown = dragStart;
 
-  // ? СОБЫТИЯ СВАЙПОМ
+  // TODO ИНИЦИАЛИЗАЦИЯ СОБЫТИЙ
+  // ? СОБЫТИЯ ДЛЯ СВАЙПОВ
   track.addEventListener('touchstart', dragStart);
-  track.addEventListener('touchend', dragEnd);
   track.addEventListener('touchmove', dragAction);
+  track.addEventListener('touchend', dragEnd);
 
   // ? СОБЫТИЯ ПО КНОПКАМ
-  prev.addEventListener('click', function () { shiftSlide(-1) })
-  next.addEventListener('click', function () { shiftSlide(1) })
+  btnPrev.addEventListener('click', function () {
+    shiftSlide("prev", "click");
+  })
+  btnNext.addEventListener('click', function () {
+    shiftSlide("next", "click");
+  })
 
   track.addEventListener('transitionend', checkIndex);
 
-  // ! ОПИСЫВАЮ СОБЫТИЯ
+  // TODO ПРОКРУТКА СВАЙПОМ
   function dragStart(e) {
     e = e || window.event;
     e.preventDefault();
     posInitial = track.offsetLeft;
+    track.classList.add('active');
 
     if (e.type == 'touchstart') {
       posX1 = e.touches[0].clientX;
     } else {
       posX1 = e.clientX;
-      document.onmouseup = dragEnd;
       document.onmousemove = dragAction;
+      document.onmouseup = dragEnd;
     }
   }
   function dragAction(e) {
@@ -245,30 +290,34 @@ function slide(mainWrapper, prev, next) {
   }
   function dragEnd(e) {
     posFinal = track.offsetLeft;
+
     if (posFinal - posInitial < -threshold) {
-      shiftSlide(1, 'drag');
+      shiftSlide("next", "swipe");
     } else if (posFinal - posInitial > threshold) {
-      shiftSlide(-1, 'drag');
+      shiftSlide("prev", "swipe");
     } else {
       track.style.left = (posInitial) + "px";
     }
 
-    document.onmouseup = null;
     document.onmousemove = null;
+    document.onmouseup = null;
+    track.classList.replace('active', 'unactive');
   }
 
-  // ? ГЛАВНЫЕ ФУНКЦИИ СМЕЩЕНИЯ
+  // TODO КНОПКИ ПРОКРУТКИ
   function shiftSlide(dir, action) {
     track.classList.add('shifting');
 
     if (allowShift) {
-      if (!action) {
+      // ? УСЛОВИЕ ОБНУЛЕНИЯ НАЧАЛЬНОЙ ПОЗИЦИИ ТОЛЬКО ДЛЯ КНОПОК*
+      if (action == "click") {
         posInitial = track.offsetLeft;
       }
-      if (dir == 1) {
+      // ? УСЛОВИЕ САМОЙ ПРОКРУТКИ
+      if (dir == "next") {
         track.style.left = (posInitial - slideSize) + "px";
         index++;
-      } else if (dir == -1) {
+      } else if (dir == "prev") {
         track.style.left = (posInitial + slideSize) + "px";
         index--;
       }
@@ -277,6 +326,7 @@ function slide(mainWrapper, prev, next) {
     allowShift = false;
   }
 
+  // TODO ЗАЦИКЛЕННОСТЬ ПЕРЕХОДА
   function checkIndex() {
     track.classList.remove('shifting');
 
@@ -292,24 +342,80 @@ function slide(mainWrapper, prev, next) {
 
     allowShift = true;
   }
+
+  // TODO ПЕРЕКЛЮЧЕНИЕ СЛАЙДОВ ПО ИНДИКАТОРАМ
+  // ? ИНДИКАТОРЫ ПРОКРУТКИ В ЗАВИСИМОСТИ ОТ КОЛИЧЕСТВА СЛАЙДОВ
+  for (let i = 0; i != items.length; i++) {
+    // ? СОЗДАЮ ПОЛОСКУ ИНДИКАТОРА
+    const indicatorLine = document.createElement('span');
+    indicatorLine.classList.add('slider__indicator-line');
+    // ? СОЗДАЮ ОБОЛОЧКУ ИНДИКТОРОВ
+    const indicatorCase = document.createElement('button');
+    indicatorCase.classList.add('slider__indicator-case');
+    indicatorCase.setAttribute('href', '#');
+    indicatorCase.appendChild(indicatorLine);
+    // ? НАКОНЕЦ ДОБАВЛЯЮ ПАРТИЮ ГОТОВЫХ РЕБЯТ В РОДИТЕЛЯ
+    indicators.appendChild(indicatorCase);
+  }
+
+  // TODO АВТО-ПРОКРУТКА СЛАЙДЕРА
+  // ? ОПИСЫВАЮ ВРЕМЯ И РАБОТУ ИНТЕРВАЛА
+  const timeShift = 5000;
+  function autoShift() {
+    track.classList.add('shifting');
+    posInitial = track.offsetLeft;
+    track.style.left = (posInitial - slideSize) + "px";
+    index++;
+    if (index == (slidesLength + 1)) {
+      track.classList.remove('shifting');
+      track.style.left = -(1 * slideSize) + "px";
+      index = 0;
+    }
+    console.log('go');
+  }
+  let timer = setInterval(autoShift, timeShift);
+
+  // ? ОТСЛЕЖИВАЮ РАБОТУ ИНТЕРВАЛА ДЛЯ СВАЙПОВ
+  const config = { "attributes": true };
+  const observeShift = new MutationObserver(mutationEvent);
+  function mutationEvent() {
+    if (track.classList.contains('active')) {
+      console.log('ОСТАНОВКА!');
+      clearInterval(timer);
+    } else if (track.classList.contains('unactive')) {
+      console.log('ПРОДОЛЖЕНИЕ!');
+      timer = setInterval(autoShift, timeShift);
+      track.classList.remove('unactive');
+    }
+  };
+  observeShift.observe(track, config);
+
+  // ? ОТСЛЕЖИВАЮ РАБОТУ ИНТЕРВАЛА ПРИ КЛИКАХ ПО КНОПКАМ
+  btnPrev.addEventListener('click', function () {
+    console.log('ОБНОВИЛ!');
+    clearInterval(timer);
+    timer = setInterval(autoShift, timeShift);
+  });
+  btnNext.addEventListener('click', function () {
+    console.log('ОБНОВИЛ!');
+    clearInterval(timer);
+    timer = setInterval(autoShift, timeShift);
+  });
+
+  // ? ОТСЛЕЖИВАЮ РАБОТУ ИНТЕРВАЛА ПРИ УХОДЕ СО СТРАНИЦЫ
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === 'hidden') {
+      console.log('Вкладка не активна');
+      clearInterval(timer);
+    } else {
+      console.log('Вкладка активна');
+      timer = setInterval(autoShift, timeShift);
+    }
+  });
+
+  // TODO ОПТИМИЗАЦИЯ СЛУШАТЕЛЕЙ СОБЫТИЙ
 }
 
-slide(wrapper, btnPrev, btnNext);
-
-// TODO СОЗДАЮ ИНДИКАТОРЫ ПРОКРУТКИ В ЗАВИСИМОСТИ ОТ КОЛИЧЕСТВА СЛАЙДОВ
-const indicators = document.querySelector('.slider__indicators');
-
-for (let i = 0; i != items.length; i++) {
-  // ? СОЗДАЮ ПОЛОСКУ ИНДИКАТОРА
-  let indicatorLine = document.createElement('span');
-  indicatorLine.classList.add('slider__indicator-line');
-  // ? СОЗДАЮ ОБОЛОЧКУ ИНДИКТОРОВ
-  let indicatorCase = document.createElement('button');
-  indicatorCase.classList.add('slider__indicator-case');
-  indicatorCase.setAttribute('href', '#');
-  indicatorCase.appendChild(indicatorLine);
-  // ? НАКОНЕЦ ДОБАВЛЯЮ ПАРТИЮ ГОТОВЫХ РЕБЯТ В РОДИТЕЛЯ
-  indicators.appendChild(indicatorCase);
-}
+slide()
 
 //# sourceMappingURL=app.js.map
