@@ -4,7 +4,6 @@
 $(document).ready(function () {
   NProgress.start();
 });
-
 $(window).on('load', function () {
   NProgress.done(true);
 });
@@ -13,6 +12,14 @@ $(window).on('load', function () {
 setTimeout(function () {
   document.querySelector('.preload').classList.remove('preload');
 }, 250)
+
+// TODO SLIDER КНОПКА
+const sliderBtn = document.querySelector('.slider__link-down');
+window.onload = () => {
+  window.setTimeout(() => {
+    sliderBtn.classList.add('show');
+  }, 300)
+}
 
 // TODO ОБНАРУЖЕНИЕ МОБИЛЬНХ УСТРОЙСТВ
 const isMobile = {
@@ -120,11 +127,10 @@ const observeCallback = function (entries, observer) {
     } = entry;
 
     if (isIntersecting) {
-      goToTopBtn.classList.remove('_show');
+      goToTopBtn.classList.remove('show');
     } else {
-      goToTopBtn.classList.add('_show');
+      goToTopBtn.classList.add('show');
     }
-
   });
 }
 
@@ -166,13 +172,16 @@ burgerMenu.addEventListener('click', function (e) {
   menuDropout.classList.toggle('_active');
 }, false);
 
-// ? УСТАНАВЛИВАЮ ВЫСОТУ ЭЛЕМЕНТЫ ПО ЕГО СОСЕД
+// TODO СТИЛИЗУЮ FOOTER С ПОМОЩЬЮ СКРИПТОВ
+// ? УСТАНАВЛИВАЮ ВЫСОТУ ЭЛЕМЕНТА ПО САМОМУ БОЛЬШОМУ
 const footerLine = document.querySelector(".footer__line");
 const footerInfo = document.querySelector(".footer__info");
 const footerHeight = document.querySelector(".footer__input-case").offsetHeight;
+
 footerLine.style.height = (footerHeight - 70) + "px";
 footerInfo.style.height = footerHeight + "px";
 
+// ? АНИМИРУЮТ LABEL ПРИ ОЧИСТКЕ ПОЛЯ INPUT
 const footerInput = document.querySelectorAll(".footer__input");
 const footerLabel = document.querySelectorAll('.footer__label');
 const footerReset = document.querySelector('buttun.footer__submit');
@@ -193,25 +202,6 @@ footerInput.forEach(input => {
 
 
 
-// TODO СКРИПТ КОНВЕРТАЦИИ И СЖАТИЯ ИЗОБРАЖЕНИЙ
-function isWebp() {
-  function testWebP(callback) {
-    var webP = new Image();
-    webP.onload = webP.onerror = function () {
-      callback(webP.height == 2);
-    };
-    webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
-  }
-  testWebP(function (support) {
-    if (support == true) {
-      document.querySelector('body').classList.add('webp');
-    } else {
-      document.querySelector('body').classList.add('no-webp');
-    }
-  });
-}
-isWebp();
-
 const wrapper = document.querySelector('.slider__wrapper');
 const track = document.querySelector('.slider__track');
 const items = document.querySelectorAll('.slider__item');
@@ -219,6 +209,7 @@ const btnPrev = document.querySelector('.slider__control_prev');
 const btnNext = document.querySelector('.slider__control_next');
 const indicators = document.querySelector('.slider__indicators');
 
+// TODO ОСНОВНАЯ ФУНКЦИЯ РАБОТЫ СЛАЙДЕРА
 function slide() {
   let posX1 = 0;
   let posX2 = 0;
@@ -236,7 +227,7 @@ function slide() {
 
   // ? КЛОНИРУЮ ПЕРВЫЕ И ПОСЛЕДНИЕ СЛАЙДЫ В ОЧЕРЕДЬ
   track.insertBefore(cloneLast, firstSlide); // ДО
-  track.appendChild(cloneFirst); //  ПОСЛЕ
+  track.appendChild(cloneFirst); // ПОСЛЕ
 
   // ? КОГДА СЛАЙДЫ КЛАНИРОВАНЫ ПРИМЕНЯЕМ СТИЛИ
   wrapper.classList.add('loaded');
@@ -352,15 +343,22 @@ function slide() {
     // ? СОЗДАЮ ОБОЛОЧКУ ИНДИКТОРОВ
     const indicatorCase = document.createElement('button');
     indicatorCase.classList.add('slider__indicator-case');
+    indicatorCase.setAttribute('data-index', i);
+    if (i == 0) {
+      indicatorCase.classList.add('active');
+    }
     indicatorCase.setAttribute('href', '#');
     indicatorCase.appendChild(indicatorLine);
     // ? НАКОНЕЦ ДОБАВЛЯЮ ПАРТИЮ ГОТОВЫХ РЕБЯТ В РОДИТЕЛЯ
     indicators.appendChild(indicatorCase);
   }
 
+  // const indicator = document.querySelector('.slider__indicator-case.active');
+  // indicator.classList.remove('active');
+
   // TODO АВТО-ПРОКРУТКА СЛАЙДЕРА
   // ? ОПИСЫВАЮ ВРЕМЯ И РАБОТУ ИНТЕРВАЛА
-  const timeShift = 5000;
+  const timeShift = 7500;
   function autoShift() {
     track.classList.add('shifting');
     posInitial = track.offsetLeft;
@@ -371,6 +369,7 @@ function slide() {
       track.style.left = -(1 * slideSize) + "px";
       index = 0;
     }
+
     console.log('go');
   }
   let timer = setInterval(autoShift, timeShift);

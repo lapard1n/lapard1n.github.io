@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./libs/reset/reset.min.css?_v=20220419214222">
-    <link rel="stylesheet" href="./libs/nprogress/nprogress.min.css?_v=20220419214222">
-    <link rel="stylesheet" href="./css/style.min.css?_v=20220419214222">
+    <link rel="stylesheet" href="./libs/reset/reset.min.css?_v=20220420214637">
+    <link rel="stylesheet" href="./libs/nprogress/nprogress.min.css?_v=20220420214637">
+    <link rel="stylesheet" href="./css/style.min.css?_v=20220420214637">
     <link rel="shortcut icon" href="./img/news.png" type="image/x-icon">
     <title>Amazing news</title>
   </head>
   <body class="preload">
     <div class="global__wrapper">
       <header class="header">
-        <div class="header__wrapper"><a class="header__icon" href="./index.html"><picture><source srcset="./img/news.webp" type="image/webp"><img src="./img/news.png" alt="image 'Company logo'"></picture></a>
+        <div class="header__wrapper"><a class="header__icon" href="./index.html"><img src="./img/news.webp" alt="image 'Company logo'"></a>
           <nav class="menu">
             <ul class="menu__list">
               <li class="menu__uplink"><a href="" data-goto=".anchor_1">First word</a><span class="menu__arrow"></span>
@@ -43,6 +43,11 @@
         </div>
       </header>
       <div class="slider">
+        <div class="slider__blure-image"></div>
+        <div class="slider__sub-title">
+          <h1>Lorem ipsum dolor.</h1>
+          <h2>- sit amet.</h2>
+        </div>
         <div class="slider__wrapper">
           <div class="slider__container">
             <div class="slider__track">
@@ -71,11 +76,14 @@
           <button class="slider__control slider__control_prev"></button>
           <button class="slider__control slider__control_next"></button>
         </div>
+        <div class="slider__sup-title">
+          <p>sed do eiusmod tempor</p>
+        </div><a class="slider__link-down" data-goto=".anchor_0"><span class="slider__link-arrow"></span></a>
       </div>
-      <main class="main">
+      <main class="main anchor_0">
         <div class="article anchor_1">
           <section class="article__wrapper">
-            <h1 class="article__title">Amazing title<picture><source srcset="./img/megaphone.webp" type="image/webp"><img class="article__title-img" src="./img/megaphone.png" alt="image 'Megaphone'"></picture></h1>
+            <h1 class="article__title">Amazing title<img class="article__title-img" src="./img/megaphone.webp" alt="image 'Megaphone'"></h1>
             <div class="article__content">
               <div class="article__info">
                 <div class="article__image"><picture><source srcset="https://picsum.photos/seed/meme/200" type="image/webp"><img src="https://picsum.photos/seed/meme/200" alt="Randomly generated image"></picture></div>
@@ -91,13 +99,13 @@
               <div class="article__text">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam rerum labore corporis quisquam consequuntur, beatae laboriosam architecto pariatur eaque accusantium eveniet voluptates assumenda.</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga sequi similique suscipit excepturi, perspiciatis corporis veniam atque.</p><span class="article__author">- Jessy P.</span>
-              </div><a class="article__link" href=""><img src="./img/arrow-right-circle.svg" alt="pointer">read more...</a><img class="bookmark" src="./img/bookmark.png" alt="image 'Bookmark'">
+              </div><a class="article__link" href=""><img src="./img/arrow-right-circle.svg" alt="pointer">read more...</a><img class="bookmark" src="./img/bookmark.webp" alt="image 'Bookmark'">
             </div>
           </section>
         </div>
         <div class="article anchor_2">
           <section class="article__wrapper">
-            <h1 class="article__title">An even more amazing title<picture><source srcset="./img/newspaper.webp" type="image/webp"><img class="article__title-img" src="./img/newspaper.png" alt="image 'Newspapaer'"></picture></h1>
+            <h1 class="article__title">An even more amazing title<img class="article__title-img" src="./img/newspaper.webp" alt="image 'Newspapaer'"></h1>
             <div class="article__content">
               <div class="article__info">
                 <div class="article__image"><picture><source srcset="https://picsum.photos/seed/keke/200" type="image/webp"><img src="https://picsum.photos/seed/keke/200" alt="Randomly generated image"></picture></div>
@@ -112,13 +120,13 @@
               </div>
               <div class="article__text">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora ipsa est voluptate saepe dolorem, nesciunt aliquam aut debitis, odio consequatur accusamus consequuntur quas consectetur unde doloremque fugit cumque. Error, omnis? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur eligendi et libero.</p><span class="article__author">- Edward K.</span>
-              </div><a class="article__link" href=""><img src="./img/arrow-right-circle.svg" alt="pointer">read more...</a><img class="bookmark" src="./img/bookmark.png" alt="image 'Bookmark'">
+              </div><a class="article__link" href=""><img src="./img/arrow-right-circle.svg" alt="pointer">read more...</a><img class="bookmark" src="./img/bookmark.webp" alt="image 'Bookmark'">
             </div>
           </section>
         </div>
         <div class="article anchor_3">
           <section class="article__wrapper">
-            <h1 class="article__title">And the most amazing title<picture><source srcset="./img/fake.webp" type="image/webp"><img class="article__title-img" src="./img/fake.png" alt="image 'Fake'"></picture></h1>
+            <h1 class="article__title">And the most amazing title<img class="article__title-img" src="./img/fake.webp" alt="image 'Fake'"></h1>
             <div class="article__content">
               <div class="article__info">
                 <div class="article__image"><picture><source srcset="https://picsum.photos/seed/pepe/200" type="image/webp"><img src="https://picsum.photos/seed/pepe/200" alt="Randomly generated image"></picture></div>
@@ -136,7 +144,7 @@
               </div>
               <div class="article__text">
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet quia, blanditiis modi nulla assumenda nesciunt molestiae fugiat ratione mollitia ab corporis blanditiis modi nulla.</p>
-              </div><a class="article__link" href=""><img src="./img/arrow-right-circle.svg" alt="pointer">read more...</a><img class="bookmark" src="./img/bookmark.png" alt="image 'Bookmark'">
+              </div><a class="article__link" href=""><img src="./img/arrow-right-circle.svg" alt="pointer">read more...</a><img class="bookmark" src="./img/bookmark.webp" alt="image 'Bookmark'">
             </div>
           </section>
         </div><a class="main__link-up" href=""><span class="main__link-arrow"></span><span class="main__link-arrow"></span></a>
@@ -188,8 +196,8 @@
         </div>
       </footer>
     </div>
-    <script src="./libs/jquery/jquery.min.js?_v=20220419214222"></script>
-    <script src="./libs/nprogress/nprogress.min.js?_v=20220419214222"></script>
-    <script src="./js/app.js?_v=20220419214222"></script>
+    <script src="./libs/jquery/jquery.min.js?_v=20220420214637"></script>
+    <script src="./libs/nprogress/nprogress.min.js?_v=20220420214637"></script>
+    <script src="./js/app.js?_v=20220420214637"></script>
   </body>
 </html>
