@@ -117,7 +117,7 @@ const header = document.querySelector('.header');
 const options = { threshold: 1.0 }
 
 const observeCallback = function (entries, observer) {
-  entries.forEach((entry) => {
+  entries.forEach(entry => {
     // ? СВОЙСТВА ОБЪЕКТА IntersectionObserver
     const {
       // ? ДОСТУП К ОТСЛЕЖИВАЕМОМУ ЭЛЕМЕНТУ
@@ -251,6 +251,29 @@ function slide() {
 
   track.addEventListener('transitionend', checkIndex);
 
+  // TODO ПЕРЕКЛЮЧЕНИЕ СЛАЙДОВ ПО ИНДИКАТОРАМ
+  // ? ИНДИКАТОРЫ ПРОКРУТКИ В ЗАВИСИМОСТИ ОТ КОЛИЧЕСТВА СЛАЙДОВ
+  for (let i = 0; i != items.length; i++) {
+    // ? СОЗДАЮ ПОЛОСКУ ИНДИКАТОРА
+    const indicatorLine = document.createElement('span');
+    indicatorLine.classList.add('slider__indicator-line');
+    // ? СОЗДАЮ ОБОЛОЧКУ ИНДИКТОРОВ
+    const indicatorCase = document.createElement('div');
+    indicatorCase.classList.add('slider__indicator-case');
+    indicatorCase.setAttribute('data-index', i);
+    if (i == 0) {
+      indicatorCase.classList.add('active');
+    }
+    indicatorCase.setAttribute('href', '#');
+    indicatorCase.appendChild(indicatorLine);
+    // ? НАКОНЕЦ ДОБАВЛЯЮ ПАРТИЮ ГОТОВЫХ РЕБЯТ В РОДИТЕЛЯ
+    indicators.appendChild(indicatorCase);
+    indicatorCase.addEventListener('click', function (e) {
+      shiftIndicator(e.currentTarget);
+    })
+  }
+  const papa = document.querySelectorAll('div.slider__indicator-case');
+
   // TODO ПРОКРУТКА СВАЙПОМ
   function dragStart(e) {
     e = e || window.event;
@@ -312,12 +335,44 @@ function slide() {
         track.style.left = (posInitial + slideSize) + "px";
         index--;
       }
-    };
+    }
+
+    shiftIndicator();
+    allowShift = false;
+  }
+
+  function shiftIndicator(qwerty) {
+    track.classList.add('shifting');
+
+    if (allowShift) {
+      papa.forEach(pipa => {
+        if (pipa.dataset.index == index) {
+          pipa.classList.add('active');
+        } else {
+          pipa.classList.remove('active');
+        }
+      })
+
+      let dataIndex = qwerty.dataset.index;
+      // track.style.left = (-1100) * (dataIndex + 1) + "px";
+      if (dataIndex == 0) {
+        track.style.left = (-1100) + "px";
+      } else if (dataIndex == 1) {
+        track.style.left = (-2200) + "px";
+      } else if (dataIndex == 2) {
+        track.style.left = (-3300) + "px";
+      } else if (dataIndex == 3) {
+        track.style.left = (-4400) + "px";
+      } else if (dataIndex == 4) {
+        track.style.left = (-5500) + "px";
+      }
+      index = dataIndex;
+    }
 
     allowShift = false;
   }
 
-  // TODO ЗАЦИКЛЕННОСТЬ ПЕРЕХОДА
+  // TODO ЗАЦИКЛЕННОСТЬ ПЕРЕХОДА И СБРОС АНИМАЦИИ
   function checkIndex() {
     track.classList.remove('shifting');
 
@@ -334,27 +389,7 @@ function slide() {
     allowShift = true;
   }
 
-  // TODO ПЕРЕКЛЮЧЕНИЕ СЛАЙДОВ ПО ИНДИКАТОРАМ
-  // ? ИНДИКАТОРЫ ПРОКРУТКИ В ЗАВИСИМОСТИ ОТ КОЛИЧЕСТВА СЛАЙДОВ
-  for (let i = 0; i != items.length; i++) {
-    // ? СОЗДАЮ ПОЛОСКУ ИНДИКАТОРА
-    const indicatorLine = document.createElement('span');
-    indicatorLine.classList.add('slider__indicator-line');
-    // ? СОЗДАЮ ОБОЛОЧКУ ИНДИКТОРОВ
-    const indicatorCase = document.createElement('button');
-    indicatorCase.classList.add('slider__indicator-case');
-    indicatorCase.setAttribute('data-index', i);
-    if (i == 0) {
-      indicatorCase.classList.add('active');
-    }
-    indicatorCase.setAttribute('href', '#');
-    indicatorCase.appendChild(indicatorLine);
-    // ? НАКОНЕЦ ДОБАВЛЯЮ ПАРТИЮ ГОТОВЫХ РЕБЯТ В РОДИТЕЛЯ
-    indicators.appendChild(indicatorCase);
-  }
-
-  // const indicator = document.querySelector('.slider__indicator-case.active');
-  // indicator.classList.remove('active');
+  // ! НАСТРОИТЬ РАБОТУ СЛАЙДЕРА НА РАЗНЫХ ТИПАХ УСТРОЙСТВ
 
   // TODO АВТО-ПРОКРУТКА СЛАЙДЕРА
   // ? ОПИСЫВАЮ ВРЕМЯ И РАБОТУ ИНТЕРВАЛА

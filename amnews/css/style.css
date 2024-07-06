@@ -650,6 +650,7 @@ body {
           align-items: center;
   background: none;
   border: none;
+  cursor: pointer;
 }
 
 .slider__indicator-case.active > .slider__indicator-line {

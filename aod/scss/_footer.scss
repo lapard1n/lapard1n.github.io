@@ -1,0 +1,116 @@
+.footer {
+    width: 100%;
+    height: 25vh;
+    background: #f7f7f7;
+    @media (max-width:  $lg-max) {
+        height: 20vh;
+    }
+    @media (max-width:  $xs-max) {
+        height: 50vh;
+    }
+}
+
+.footer-case {
+    max-width: 1130px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: $xs-max) {
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        .footer__left {
+            margin-top: 25px;
+            align-items: center;
+            line-height: 20px;
+        }
+        .footer__center {
+            margin-top: 25px;
+        }
+        .footer__right {
+            margin: 25px 0;
+        }
+    }
+    @media (max-width:  $xs-max) {
+        justify-content: space-evenly;
+        .footer__left {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        .footer__center {
+            margin-top: 0;
+        }
+        .footer__right {
+            margin: 0;
+        }
+    }
+}
+
+.footer__left {
+    flex: 1 0 33.333%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+    h1 {
+        font-family: 'Lato', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: #848789;
+    }
+    i {
+        font-family: 'Lato', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: #848789;
+    }
+    @media (max-width:  $md-max) {
+        h1 {
+            font-size: 20px;
+        }
+        i {
+            font-size: 14px;
+        }
+    }
+}
+
+.footer__center {
+    min-height: 50px;
+    flex: 0 1 33.333%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    a {
+        margin-right: 15px;
+        &:last-child {
+            margin-right: 0;
+        }
+        &:hover img {
+            opacity: 0.8;
+            transition: all 0.2s;
+        }
+    }
+}
+
+.footer__right {
+    min-height: 50px;
+    flex: 1 0 33.333%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    i {
+        margin-right: 15px;
+        font-family: 'Lato', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: #848789;
+    }
+    @media (max-width:  $md-max) {
+        i {
+            font-size: 14px;
+        }
+    }
+}

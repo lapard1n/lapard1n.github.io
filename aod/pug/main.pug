@@ -1,0 +1,106 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
+        title A.O.D
+        link(rel="stylesheet" href="css/main.css" type="text/css")
+        link(rel="shortcut icon" href="img/logo.png" type="image/x-icon")
+    body
+        // HEADER SECTION
+        include _header.pug
+        // MAIN SECTION
+        main(class="grid-case")
+            // TITLE ROW
+            section(class="title-row")
+                img(src="img/main/icon-01.png")
+                h1(class="__title") A NEW GENERATION OF VINTAGE BIKE
+                p(class="__text").
+                    Lorem Ipsum is simply dummy about of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy about ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            // FIRST CONTENT ROW
+            section(class="first-row")
+                a(class="link-row" href="#")
+                    img(class="img-row" src="img/main/content-01.png")
+                    img(class="logo-row" src="img/main/logo-01.png")
+                section(class="about-row")
+                    div(class="__content")
+                        div(class="_logo"): img(src="img/main/icon-02.png")
+                        h1(class="_title") vintage Oliva
+                        p(class="_text").
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived.
+                    div(class="__img"): img(class="img-row" src="img/main/content-02.png")
+            // SECOND CONTENT ROW
+            section(class="second-row")
+                section(class="about-row")
+                    div(class="__content")
+                        div(class="_logo"): img(src="img/main/icon-03.png")
+                        h1(class="_title") la Boriosa
+                        p(class="_text").
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived.
+                    div(class="__img"): img(class="img-row" src="img/main/content-03.png")
+                a(class="link-row" href="#")
+                    img(class="img-row" src="img/main/content-04.png")
+                    img(class="logo-row" src="img/main/logo-02.png")
+            // FIRD CONTENT ROW
+            section(class="fird-row")
+                a(class="link-row _left" href="#")
+                    img(class="img-row" src="img/main/content-05.png")
+                    img(class="logo-row" src="img/main/logo-03.png")
+                section(class="about-row")
+                    div(class="__content")
+                        div(class="_logo"): img(src="img/main/icon-04.png")
+                        h1(class="_title") retrò Bike - M. Hulot
+                        p(class="_text").
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived.
+                    div(class="__img"): img(class="img-row" src="img/main/content-06.png")
+                a(class="link-row _right" href="#")
+                    img(class="img-row" src="img/main/content-07.png")
+                    img(class="logo-row" src="img/main/logo-01.png")
+            // TWITTER ROW
+            section(class="twitter-row")
+                img(src="img/main/twitter.png")
+                h1(class="__title")
+                    a(class="hover-line" href="#") AOD New York @aod
+                    i  / 35 min
+                p(class="__text")
+                    i Lorem Ipsum is simply dummy about of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy about ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            // GALLERY ROW
+            section(class="gallery-row")
+                div(class="__item-01 link-row")
+                    img(class="img-row" src="img/main/gallery-01.png")
+                    img(class="logo-row" src="img/main/gallery-icon.png")
+                div(class="__item-02 link-row")
+                    img(class="img-row" src="img/main/gallery-02.png")
+                    img(class="logo-row" src="img/main/gallery-icon.png")
+                div(class="__item-03 link-row")
+                    img(class="img-row" src="img/main/gallery-03.png")
+                    img(class="logo-row" src="img/main/gallery-icon.png")
+                div(class="__item-04 link-row")
+                    img(class="img-row" src="img/main/gallery-04.png")
+                    img(class="logo-row" src="img/main/gallery-icon.png")
+                div(class="__item-05 link-row")
+                    img(class="img-row" src="img/main/gallery-05.png")
+                    img(class="logo-row" src="img/main/gallery-icon.png")
+                div(class="__item-06 link-row")
+                    img(class="img-row" src="img/main/gallery-06.png")
+                    img(class="logo-row" src="img/main/gallery-icon.png")
+                div(class="__item-07 link-row")
+                    img(class="img-row" src="img/main/gallery-07.png")
+                    img(class="logo-row" src="img/main/gallery-icon.png")
+                div(class="__item-08 link-row")
+                    img(class="img-row" src="img/main/gallery-08.png")
+                    img(class="logo-row" src="img/main/gallery-icon.png")
+            // BUTTON ROW
+            section(class="button-row")
+                div(class="__case")
+                    input(class="_button" type="button" value="DISCOVER THE SHOP")
+            // MAIL ROW
+            section(class="mail-row")
+                div(class="__img")
+                    img(src="img/logo.png")
+                h1(class="__title") Stay on the saddle!
+                form(class="__form" action="#" method="POST" name="mail")
+                    input(class="_mail" type="mail" placeholder="enter your email...")
+                    input(class="_button" type="button" value="GO")
+        // FOOTER SECTION
+        include _footer.pug

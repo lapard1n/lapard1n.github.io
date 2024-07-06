@@ -1,0 +1,153 @@
+// Extra small devices (portrait phones, less than 576px)
+
+@media (max-width: 1200px) {
+  .product {
+    max-width: none;
+  }
+  .product__title {
+    text-align: center;
+    margin-left: 0;
+  }
+  .item-case {
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-around;
+  }
+  .item:last-child {
+    grid-column: 2/3;
+  }
+}
+
+@media (max-width: 992px) {
+  .connection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &__number {
+      margin: 0 0 10px;
+    }
+  }
+}
+
+@media (max-width: 880px) {
+  .product {
+    margin-bottom: 0;
+  }
+  .item-case {
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-evenly;
+  }
+  .advertising {
+    flex-direction: column;
+    margin-bottom: 0;
+    &__block {
+      width: 90%;
+      &:first-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .item-case {
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+  }
+  .info {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px;
+  }
+  .info__links {
+    order: 1;
+  }
+  .info__adress {
+    order: 0;
+    margin: 25px 0;
+  }
+  .connection._second {
+    flex-direction: row;
+    margin: 0;
+    order: -1;
+    .connection__number {
+      margin: 0 15px 0 0;
+    }
+  }
+}
+
+@media (max-width: 695px) {
+  .sup-menu {
+    height: 50px;
+    flex-flow: row wrap;
+    align-content: space-between;
+    &__link {
+      margin: 0 25px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .logo {
+    display: flex;
+    justify-content: center;
+    &__name {
+      margin: 25px 0 20px;
+    }
+  }
+  .connection._first {
+    display: none;
+  }
+  .item-case {
+    display: flex;
+    flex-flow: row wrap;
+  }
+}
+
+@media (max-width: 434px) {
+  .connection__number {
+    display: none;
+  }
+  .sub-menu-case {
+    display: none;
+  }
+  .sup-menu {
+    height: 100px;
+    flex-flow: row wrap;
+    align-content: space-between;
+    &__link {
+      margin: 0 25px;
+    }
+  }
+  .slider__text {
+    width: auto;
+  }
+  .advertising__block {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .advertising__cont {
+    width: auto;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 25px;
+  }
+  .end-line {
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    p {
+      text-align: center;
+      margin: 25px;
+      &:last-child {
+        margin-top: 0;
+      }
+    }
+  }
+  .advertising__mail {
+    width: 80%;
+  }
+}

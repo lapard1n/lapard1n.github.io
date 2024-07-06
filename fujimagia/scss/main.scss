@@ -1,0 +1,413 @@
+/* RULES*/
+
+@import "_rules.scss";
+
+/* HEADER */
+
+@import "_header.scss";
+
+/* MAIN */
+
+.main {
+    width: 100%;
+    padding-top: 100px;
+    background: #eeeeee;
+}
+
+/* MAIN DISCOUNT SLIDER */
+
+.slider {
+    width: 100%;
+    height: 50vh;
+    position: relative;
+    overflow: hidden;
+    &:hover .slide {
+        transform: scale(1.02);
+    }
+}
+
+.slide {
+    width: inherit;
+    height: inherit;
+    transition: all 0.2s linear;
+    background: no-repeat center url('../img/main/background.jpg');
+}
+
+.slider__arrow {
+    width: 50px;
+    height: 50px;
+    @extend %center;
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    background-color:rgba(56, 69, 79, 0.5);
+    transition: all .1s linear;
+    cursor: pointer;
+    &:hover {
+        background-color:rgba(255, 255, 255, 0.9);
+    }
+    .fas {
+        font-size: 50px;
+        color: #ffffff;
+        transition: all .1s linear;
+    }
+    &:hover .fas {
+        color: #ff7675;
+    }
+}
+
+.slider__arrow_left {
+    top: 50%;
+    left: -25%;
+    transform: translateY(-50%);
+    .fas {
+        transform: translateX(-10%);
+    }
+}
+
+.slider__arrow_right {
+    top: 50%;
+    right: -25%;
+    transform: translateY(-50%);
+    .fas {
+        transform: translateX(10%);
+    }
+}
+
+.title {
+    width: 475px;
+    height: 130px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color:rgba(56, 69, 79, 0.7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    z-index: 1;
+    &::after {
+        content: "";
+        width: 2px;
+        height: 100px;
+        display: block;
+        position: absolute;
+        z-index: 1;
+        right: -1px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #eeeeee;
+    }
+    &::before {
+        content: "";
+        width: 2px;
+        height: 100px;
+        display: block;
+        position: absolute;
+        z-index: 1;
+        left: -1px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #eeeeee;
+    }
+}
+
+.title__sub {
+    position: relative;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    font-size: 50px;
+    line-height: 50px;
+    font-weight: 900;
+    color: #ffffff;
+    &::before {
+        content: "";
+        width: 575px;
+        height: 2px;
+        display: block;
+        position: absolute;
+        z-index: 1;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #eeeeee;
+    }
+
+}
+
+.title__sup {
+    position: relative;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: 50px;
+    font-weight: 800;
+    color: #ffffff;
+    &::after {
+        content: "";
+        width: 575px;
+        height: 2px;
+        display: block;
+        position: absolute;
+        z-index: 1;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #eeeeee;
+    }
+}
+
+/* MAIN FOOD CARDS */
+
+.food {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+/* FOOD CARDS LINKS */
+
+.links {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.15),
+                0 -1.5px 3px rgba(0, 0, 0, 0.15);
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+
+.links__btns {
+    @extend %sizes;
+    display: flex;
+    align-items: center;
+}
+
+.links__img {
+    width: 25px;
+    height: 25px;
+}
+
+.btn-case {
+    height: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #38454F;
+    &:first-child {
+        padding-left: 0;
+    }
+    &:last-child {
+        border-right: none;
+        padding-right: 0;
+    }
+}
+
+.btn {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight:400;
+    color: #38454F;
+    cursor: pointer;
+}
+
+/* FOOD CARDS */
+
+.card-case {
+    @extend %sizes;
+    margin: 15px 0;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-between;
+    grid-gap: 15px;
+}
+
+.card {
+    width: 280px;
+    height: 400px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 2%;
+    &:hover .card__img-case .card__img {
+        transform: scale(1.05);
+    }
+    &:hover .card__text {
+        background-color: #ff7675;
+    }
+    &:hover .card__text .card__title h1 {
+        color: #ffffff;
+    }
+    &:hover .card__text .card__title h1::after {
+        width: 100%;
+    }
+    &:hover .card__text .card__price .card__price_sum {
+        color: #ffffff;
+    }
+    &:hover .card__text .card__price .card__price_buy button {
+        color: #ff7675;
+        background: #ffffff;
+    }
+    &:hover .card__text .card__price .card__quantity {
+        color: #ff7675;
+        background: #ffffff;
+    }
+    &:hover .card__text .card__gramm h2 {
+        color: #ffffff;
+    }
+}
+
+.card__img-case{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card__img {
+    transition: all 0.2s linear;
+}
+
+.card-logo-case {
+    width: 50px;
+    height: 50px;
+    @extend %center;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 15px;
+    transform: translate(-15%, -75%);
+    border-radius: 50%;
+    background-color:rgba(56, 69, 79, 0.5);
+}
+
+.card__logo {
+    width: 35px;
+    height: 35px;
+}
+
+.card__text {
+    width: 100%;
+    height: 30%;
+    position: relative;
+    transition: all .2s linear;
+}
+
+.card__title {
+    width: 100%;
+    height: 30%;
+    @extend %center;
+}
+
+.card__title h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight:400;
+    color: #38454F;
+    position: relative;
+    &::after {
+        content: "";
+        width: 0;
+        height: 1px;
+        display: block;
+        position: absolute;
+        z-index: 1;
+        bottom: -3px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all .2s ease-in-out;
+        background: #ffffff;
+    }
+}
+
+.card__price {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card__price_sum {
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 30px;
+        font-weight:600;
+        color: #38454F;
+
+}
+
+.card__price_buy {
+    width: 120px;
+    height: 37px;
+    position: relative;
+    button {
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight:600;
+        cursor: pointer;
+        transition: all .2s linear;
+        color: #ffffff;
+        background: #ff7675;
+    }
+}
+
+.card__quantity {
+    width: 120px;
+    height: 37px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    color: #ffffff;
+    background: #ff7675;
+    transition: all .2s linear;
+    span {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: inherit;
+    }
+    button {
+        height: 100%;
+        width: 40%;
+        font-size: 20px;
+        color: inherit;
+        cursor: pointer;
+    }
+}
+
+.card__quantity_disable { /* ОТКЛЮЧЕНИЕ ФУНКЦИИ ПОКУПКИ */
+    display: none;
+}
+
+.card__gramm {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        font-weight:400;
+        color: #38454F;
+    }
+}
+
+/* FOOTER */
+
+@import "_footer.scss";

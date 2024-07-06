@@ -1,0 +1,70 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url('../fonts/Montserrat_Alternates/MontserratAlternates-Black.ttf') format('truetype');
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url('../fonts/Montserrat_Alternates/MontserratAlternates-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url('../fonts/Montserrat_Alternates/MontserratAlternates-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url('../fonts/Montserrat_Alternates/MontserratAlternates-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url('../fonts/Montserrat_Alternates/MontserratAlternates-Medium.ttf') format('truetype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url('../fonts/Montserrat_Alternates/MontserratAlternates-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('../fonts/Roboto/Roboto-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+
+%sizes {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 15px;
+}
+
+%center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: none;
+    border: none;
+    outline: none;
+    list-style-type: none;
+}
+
+// ПАЛИТРА КОТОРУЮ Я УМУДРИЛСЯ СОЗДАТЬ В ПОСЛЕДНИЙ МОМЕНТ
+
+$rd: #FF7675;
+$gr: #38454F;
+$ff: #ffffff;
+$ee: #eeeeee;
