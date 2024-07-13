@@ -1,0 +1,208 @@
+/*? СТИРАНИЕ ЭЛЕМЕНТА СЛЕВА НАПРАВО */
+@-webkit-keyframes task-deletion {
+  from {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+  50% {
+    transform: translateX(-30px);
+    opacity: 50%;
+  }
+  to {
+    transform: translateX(30px);
+    opacity: 0%;
+  }
+}
+@keyframes task-deletion {
+  from {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+  50% {
+    transform: translateX(-30px);
+    opacity: 50%;
+  }
+  to {
+    transform: translateX(30px);
+    opacity: 0%;
+  }
+}
+
+/*? ЛИНИЯ ЗАЧЕРКИВАНИЯ СЛЕВА НАПРАВО И НАЗАД */
+@-webkit-keyframes line-animation {
+  0% {
+    width: 0;
+    left: 120%;
+    opacity: 0;
+  }
+  25% {
+    width: 25%;
+    left: 100%;
+    opacity: 20%;
+  }
+  50% {
+    width: 50%;
+    left: 0;
+    opacity: 40%;
+  }
+  75% {
+    width: 75%;
+    left: -20%;
+    opacity: 60%;
+  }
+  100% {
+    width: 120%;
+    left: 50%;
+    opacity: 80%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+@keyframes line-animation {
+  0% {
+    width: 0;
+    left: 120%;
+    opacity: 0;
+  }
+  25% {
+    width: 25%;
+    left: 100%;
+    opacity: 20%;
+  }
+  50% {
+    width: 50%;
+    left: 0;
+    opacity: 40%;
+  }
+  75% {
+    width: 75%;
+    left: -20%;
+    opacity: 60%;
+  }
+  100% {
+    width: 120%;
+    left: 50%;
+    opacity: 80%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+@-webkit-keyframes reverse-line {
+  0% {
+    width: 120%;
+    left: 50%;
+    opacity: 80%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  25% {
+    width: 75%;
+    left: -20%;
+    opacity: 60%;
+  }
+  50% {
+    width: 50%;
+    left: 0;
+    opacity: 40%;
+  }
+  75% {
+    width: 25%;
+    left: 100%;
+    opacity: 20%;
+  }
+  100% {
+    width: 0;
+    left: 120%;
+    opacity: 0;
+  }
+}
+@keyframes reverse-line {
+  0% {
+    width: 120%;
+    left: 50%;
+    opacity: 80%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  25% {
+    width: 75%;
+    left: -20%;
+    opacity: 60%;
+  }
+  50% {
+    width: 50%;
+    left: 0;
+    opacity: 40%;
+  }
+  75% {
+    width: 25%;
+    left: 100%;
+    opacity: 20%;
+  }
+  100% {
+    width: 0;
+    left: 120%;
+    opacity: 0;
+  }
+}
+
+/*? ПЕРЕВОРОТ ЭЛЕМЕНТА ПО ОСИ Z */
+@-webkit-keyframes way-up {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(180deg);
+  }
+}
+@keyframes way-up {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(180deg);
+  }
+}
+@-webkit-keyframes way-down {
+  from {
+    transform: rotateX(180deg);
+  }
+  to {
+    transform: rotateX(0deg);
+  }
+}
+@keyframes way-down {
+  from {
+    transform: rotateX(180deg);
+  }
+  to {
+    transform: rotateX(0deg);
+  }
+}
+
+/*? ПРЫГАЮЩАЯ СТРЕЛКА */
+@-webkit-keyframes jumping-arrow {
+  from {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10%);
+  }
+  60% {
+    transform: translateY(10%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes jumping-arrow {
+  from {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10%);
+  }
+  60% {
+    transform: translateY(10%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

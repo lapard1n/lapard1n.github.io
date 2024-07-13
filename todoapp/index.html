@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First To-Do List</title>
+  <link rel="icon" href="./img/icon/favicon.ico">
+
+  <link rel="stylesheet" href="./css/additions/normalize.css">
+  <link rel="stylesheet" href="./css/additions/fonts.css">
+
+  <link rel="stylesheet" href="./css/semantics/global.css">
+  <link rel="stylesheet" href="./css/semantics/header.css">
+  <link rel="stylesheet" href="./css/semantics/main.css">
+  <link rel="stylesheet" href="./css/semantics/footer.css">
+
+  <link rel="stylesheet" href="./css/additions/animations.css">
+  <link rel="stylesheet" href="./css/additions/adaptive.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <nav class="header__list">
+        <a class="header__title" href="./index.html">
+          <img src="./img/icon/favicon-32x32.png" alt="Logo To-Do List app">
+          To-Do List
+        </a>
+
+        <section class="header__menu">
+          <div class="header__theme">
+            <img src="./img/moonDark.svg" alt="Dark theme button" id="dark-theme">
+            <img src="./img/sunLight.svg" alt="Light theme button" id="light-theme">
+          </div>
+          <div class="header__lang">
+            <span>RU</span>
+            <hr>
+            <span>EN</span>
+          </div>
+        </section>
+      </nav>
+    </header>
+
+    <main class="todo-app">
+      <header class="todo-app__header">
+        <div class="todo-app__title">
+          <h1>To-Do List:</h1>
+          <img src="./img/toDoList.webp" alt="Icon To-Do project">
+        </div>
+
+        <div class="todo-app__filter">
+          <div class="todo-app__filter-row">
+            <span class="todo-app__filter-element_target" id="all">All</span>
+            <button class="todo-app__filter-button">
+              <img src="./img/arrowDownLight.svg" alt="Button that opens the list">
+            </button>
+          </div>
+          <div class="todo-app__filter-list">
+            <span class="todo-app__filter-element" id="checked">Checked</span>
+            <span class="todo-app__filter-element" id="unchecked">Unchecked</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="todo-app__row">
+        <textarea class="todo-app__input" id="input-box" placeholder="Add your task..." rows="1"
+          maxlength="404"></textarea>
+        <span class="todo-app__range"></span>
+        <button class="todo-app__publish" id="input-publish" disabled>Add</button>
+      </section>
+
+      <hr class="todo-app__spacer">
+
+      <section class="todo-app__list" id="list-container">
+        <article class="task" id="task-prototype" draggable="false">
+          <div class="task__content unchecked">
+            <p></p>
+          </div>
+          <div class="task__panel">
+            <span class="task__drag-panel dragging">
+              <img class="task__drag-ico" src="./img/verticalDotsDark.svg" alt="Button for dragging a task."
+                draggable="false">
+              <img class="task__drag-ico" src="./img/verticalDotsDark.svg" alt="Button for dragging a task."
+                draggable="false">
+            </span>
+            <img class="task__panel-button changing" src="./img/editDark.svg" alt="Button for changing a task."
+              draggable="false">
+            <img class="task__panel-button deleting" src="./img/trashDark.svg" alt="Button for deleting a task."
+              draggable="false">
+          </div>
+        </article>
+      </section>
+
+      <footer class="todo-app__info" id="tasks-info">
+        <div class="todo-app__counter">
+          <span class="todo-app__counter-value"></span>
+          <span class="todo-app__counter-value"></span>
+        </div>
+        <p class="todo-app__placeholder"></p>
+        <div class="todo-app__cleaning">
+          <button class="todo-app__clear">Clear all</button>
+          <span class="todo-app__strike"></span>
+        </div>
+      </footer>
+
+      <button class="scroll-arrow">
+        <img src="./img/arrowDark.svg" alt="Button for srolling." draggable="false">
+      </button>
+    </main>
+
+    <footer class="footer">
+      <section class="footer__list">
+        <a target="_blank" href="https://github.com/lapard1n">© 2024 lapard1n, Inc.</a>
+        <a target="_blank" href="mailto:whoisit@who.com?subject=To-Do List app">mail:
+          whoisit@itsme.com</a>
+        <a target="_blank" href="tel:+78005553535">call: 8 (800) 555-35-35</a>
+      </section>
+    </footer>
+  </div>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+
+</html>
